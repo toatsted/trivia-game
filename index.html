@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>trivia</title>
 
 	<!-- reset css -->
 	<link rel="stylesheet" href="./assets/css/reset.css" type="text/css"/>
 	<!-- main css -->
 	<link rel="stylesheet" href="./assets/css/style.css" type="text/css"/>
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	
 </head>
 <body>
@@ -15,13 +19,31 @@
 		<header>
 			<img id="logo" src="./assets/images/logo.png" alt="the office">
 			<img src="./assets/images/trivia.png" alt="trivia">
+
 		</header>
-
 		
+		<div class="time-left">
+			<h2>remaining time</h2>
+			<h2 id="time">00:30</h2>
+		</div>
 
-	</div
->
+		<div id="question">
+			<img src="https://placehold.it/320x180" alt="">
+			<p>this is where the question will go?</p>
+			<ul>
+				<li>option1</li>
+				<li>option2</li>
+				<li>option3</li>
+			</ul>
+		</div>
+
+
+	</div>
+
 	<!-- jquery -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+	<!-- app.js -->
+	<script src="./assets/javascript/app.js"></script>
 </body>
 </html>

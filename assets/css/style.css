@@ -1,5 +1,5 @@
-html { 
-	background: url(../images/bg.jpg) no-repeat center center fixed; 
+html {
+	background: url(../images/bg.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -7,7 +7,8 @@ html {
 
 	padding: 20px;
 
-	font-family: sans-serif;
+	font-family: "Roboto", sans-serif;
+	text-align: center;
 }
 
 .container {
@@ -16,7 +17,8 @@ html {
 	padding: 20px;
 
 	width: 960px;
-	
+	height: 650px;
+
 	margin: 0 auto;
 }
 
@@ -24,11 +26,36 @@ html {
 header #logo {
 	margin-right: 10px;
 	width: 350px;
-
 }
 
 header {
 	padding-bottom: 20px;
-	border-bottom: solid #000000 2px;
-	text-align: center;
+	border-bottom: solid #000 2px;
+}
+
+h2 {
+	font-size: 20px;
+	margin: 5px 0;
+}
+
+.time-left {
+	width: 150px;
+	border-bottom: dotted #000 2px;
+	border-right: dotted #000 2px;
+}
+
+#question img {
+	display: block;
+	margin: 20px auto;
+}
+
+#question p {
+	font-size: 24px;
+
+	margin: 20px 0;
+}
+
+#question li {
+	margin: 10px 0;
+	font-size: 20px;
 }
