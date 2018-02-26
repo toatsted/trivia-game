@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	function Query(question, choices, answer){
 		this.question = question;
 		this.choices = choices;
@@ -64,11 +65,25 @@ $(document).ready(function(){
 						  "")
 		)*/
 
-	let randQuestion = Math.floor(Math.random() * 6);
-	$("#question").text(queries[randQuestion].question);
-	$("#choices").empty()
-	queries[randQuestion].choices.forEach(function(value, index){
-		$("#choices").append("<li>" + value + "</li>");
+	function randomQuestion(){
+		let randNum = Math.floor(Math.random() * queries.length);
+		$("#question").text(queries[randNum].question);
+		$("#choices").empty()
+		queries[randNum].choices.forEach(function(value, index){
+			$("#choices").append("<li class='choice' id='" + index + "'>" + value + "</li>");
+		});
+
+		return randNum;
+	}
+
+	questionNums = [];
+	questionNums.push(randomQuestion());
+
+	$("ul").on("click", ".choice", function(){
+		btn = $(this);
+		if(btn.text() === queries[questionNums[questionNums.length-1]].answer){
+			questionNums.push(randomQuestion());
+		}
 	});
 
 });

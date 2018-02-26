@@ -48,6 +48,7 @@ li {
 	font-size: 23px;
 	text-align: left;
 	margin: 10px auto;
+	padding: 5px;
 }
 
 ul {
@@ -61,18 +62,8 @@ ul {
 	border-right: dotted #000 2px;
 }
 
-#question img {
-	display: block;
-	margin: 20px auto;
-}
-
-#question p {
-	font-size: 24px;
-
-	margin: 20px 0;
-}
-
-#question li {
-	margin: 10px 0;
-	font-size: 20px;
+.choice:hover {
+	background-color: #005b7b77;
+	color: #ffffff;
+	border-radius: 10px;
 }
