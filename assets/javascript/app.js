@@ -1,10 +1,12 @@
 $(document).ready(function(){
+	const startingTime = 20;
 
 	function Query(question, choices, answer){
 		this.question = question;
 		this.choices = choices;
 		this.answer = answer;
 	}
+
 
 	let queries = [];
 
@@ -76,13 +78,24 @@ $(document).ready(function(){
 		return randNum;
 	}
 
-	questionNums = [];
+	$("#time").text(startingTime);
+	let timeLeft = startingTime;
+	let timeCounter = setInterval(function(){timeLeft--; $("#time").text(timeLeft);}, 1000 * 1);
+
+	let questionNums = [];
 	questionNums.push(randomQuestion());
 
 	$("ul").on("click", ".choice", function(){
 		btn = $(this);
 		if(btn.text() === queries[questionNums[questionNums.length-1]].answer){
 			questionNums.push(randomQuestion());
+			timeLeft = startingTime;
+			$("#time").text(timeLeft);
+		}else{
+			timeLeft = 5;
+			$("#time").text(timeLeft);
+			$("#question").text("Incorrect! The right answer was '" + queries[questionNums[questionNums.length-1]].answer + "'");
+			$("#choices").empty().append("<img src='https://placehold.it/200' />")
 		}
 	});
 
