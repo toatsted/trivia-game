@@ -78,9 +78,14 @@ $(document).ready(function(){
 		return randNum;
 	}
 
+	function decrementTime(){
+		timeLeft--;
+		$("#time").text(timeLeft);
+	}
+
 	$("#time").text(startingTime);
 	let timeLeft = startingTime;
-	let timeCounter = setInterval(function(){timeLeft--; $("#time").text(timeLeft);}, 1000 * 1);
+	let timeCounter = setInterval( decrementTime, 1000 * 1);
 
 	let questionNums = [];
 	questionNums.push(randomQuestion());
