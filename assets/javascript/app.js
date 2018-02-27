@@ -2,8 +2,8 @@
 	const startingTime = 20;
 
 	let time = $("#time").text(startingTime);
-	let timeLeft = startingTime;
-	let timeCounter = setInterval(decrementTime, 1000 * 1);
+	let timeLeft;
+	let timeCounter;
 
 	let queryNum;
 	let question = $("#question");
@@ -22,6 +22,9 @@
 
 	function randomQuestion() {
 
+		clearInterval(timeCounter);
+		timeCounter = setInterval(decrementTime, 1000 * 1);
+		timeLeft = startingTime;
 		let randNum = Math.floor(Math.random() * queries.length);
 		question.text(queries[randNum].question);
 		choices.empty()
@@ -29,6 +32,7 @@
 			choices.append("<li class='choice' id='" + index + "'>" + value + "</li>");
 		});
 
+		queryNum = queries[randNum].num;
 		return queries[randNum];
 
 	}
@@ -39,6 +43,42 @@
 		time.text(timeLeft);
 
 	}
+
+	$("ul").on("click", ".choice", function() {
+		btn = $(this);
+
+		if (btn.text() === queries[queryNum].answer) {
+
+			timeLeft = startingTime;
+			time.text(timeLeft);
+			queryNum = randomQuestion().num;
+
+		} else {
+			choices.empty();
+
+			timeLeft = 10;
+			time.text(timeLeft);
+			setTimeout(randomQuestion, 1000 * timeLeft);
+
+			question.text("Incorrect! The right answer was '" + queries[queryNum].answer + "'");
+
+			apiURL = "http://api.giphy.com/v1/gifs/random?" +
+					 "api_key=oN5N5nfVB5JFrvXamobIf4S9TTbt6d3F&" +
+					 "tag=the+office&";
+
+			$.get(apiURL).then(function(response){
+
+				choices
+					.append("<iframe src='" + response.data.embed_url + "' " +
+							"width='480' height='272' frameBorder='0' " +
+							"class='giphy-embed' allowFullScreen></iframe>");
+
+			})
+
+
+
+		}
+	});
 
 	queries.push(new Query(0,
 		"(S1E1 'Pilot') What character starts their first day at Dunder Mifflin on the show's Pilot?", [
@@ -94,36 +134,25 @@
 		],
 
 		"Michael"));
+	queries.push(new Query(6,
+		"(S2E19 'Michaels Birthday') Who has a cancer scare?", [
+			"Michael",
+			"Dwight",
+			"Creed",
+			"Kevin"
+		],
 
-	queryNum = randomQuestion().num;
-	$("ul").on("click", ".choice", function() {
-		btn = $(this);
+		"Kevin"));
+	queries.push(new Query(7,
+		"(S2E22 'Casino Night') Who has two dates?", [
+			"Toby",
+			"Dwight",
+			"Michael",
+			"Pam"
+		],
 
-		if (btn.text() === queries[queryNum].answer) {
+		"Michael"));
 
-			timeLeft = startingTime;
-			time.text(timeLeft);
-			queryNum = randomQuestion().num;
 
-		} else {
-
-			timeLeft = 5;
-			time.text(timeLeft);
-			question.text("Incorrect! The right answer was '" + queries[queryNum].answer + "'");
-
-			apiURL = "http://api.giphy.com/v1/gifs/random?" +
-					 "api_key=oN5N5nfVB5JFrvXamobIf4S9TTbt6d3F&" +
-					 "tag=the+office&" +
-					 "limit=1";
-
-			$.get(apiURL).then(function(response){
-
-				choices.empty()
-					.append("<iframe src=" + response.data.embed_url + " frameborder='0'></iframe>");
-
-			})
-
-		}
-	});
-
+	randomQuestion();
 });
