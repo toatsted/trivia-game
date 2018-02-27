@@ -1,4 +1,4 @@
-$(document).ready(function() {
+ 	$(document).ready(function() {
 	const startingTime = 20;
 
 	let time = $("#time").text(startingTime);
