@@ -106,7 +106,7 @@ $(document).ready(function() {
 	// appends the GIF to the choices list
 	function getGIF() {
 
-		apiURL = "http://api.giphy.com/v1/gifs/random?" +
+		apiURL = "https://api.giphy.com/v1/gifs/random?" +
 			"api_key=oN5N5nfVB5JFrvXamobIf4S9TTbt6d3F&" +
 			"tag=the+office&";
 
