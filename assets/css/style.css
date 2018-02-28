@@ -64,3 +64,11 @@ ul {
 	color: #ffffff;
 	border-radius: 10px;
 }
+
+button {
+	margin: 10px;
+}
+
+#question {
+	margin: 50px 100px;
+}
