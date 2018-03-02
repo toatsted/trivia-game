@@ -17,6 +17,8 @@ html {
 	height: 650px;
 
 	margin: 0 auto;
+
+	border: solid #000000 1px;
 }
 
 
@@ -71,4 +73,14 @@ button {
 
 #question {
 	margin: 50px 100px;
+}
+
+#query {
+	border: 1px solid #000000;
+	margin: 20px 40px;
+	border-radius: 20px;
+}
+
+#choices {
+	margin-bottom: 40px;
 }
